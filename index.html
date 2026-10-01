@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pequeños momentos 💙</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap');
+
+:root {
+    --paper: #f7f3eb;
+    --paper-dark: #e8e0d2;
+    --blue: #729cc2;
+    --blue-dark: #416887;
+    --blue-light: #dceaf5;
+    --ink: #4e5961;
+    --shadow: rgba(38, 55, 69, .25);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 20% 20%, #dbe9f4 0%, transparent 30%),
+        radial-gradient(circle at 80% 70%, #d9e7f1 0%, transparent 30%),
+        #cbd9e2;
+    font-family: "Playfair Display", Georgia, serif;
+    color: var(--ink);
+}
+
+/* =====================================================
+   FONDO
+===================================================== */
+
+.background-decoration {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.bg-heart {
+    position: absolute;
+    color: rgba(65, 104, 135, .18);
+    font-size: 25px;
+    animation: float 8s ease-in-out infinite;
+}
+
+.bg-heart:nth-child(1) {
+    top: 12%;
+    left: 7%;
+}
+
+.bg-heart:nth-child(2) {
+    top: 72%;
+    left: 12%;
+    animation-delay: 2s;
+}
+
+.bg-heart:nth-child(3) {
+    top: 20%;
+    right: 8%;
+    animation-delay: 3s;
+}
+
+.bg-heart:nth-child(4) {
+    bottom: 12%;
+    right: 14%;
+    animation-delay: 1s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(8deg);
+    }
+}
+
+/* =====================================================
+   ESCENA
+===================================================== */
+
+.album-scene {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+}
+
+/* =====================================================
+   ALBUM
+===================================================== */
+
+.album {
+    width: min(1100px, 94vw);
+    height: min(720px, 88vh);
+    position: relative;
+    perspective: 1800px;
+}
+
+/* =====================================================
+   PORTADA
+===================================================== */
+
+.cover {
+    position: absolute;
+    inset: 0;
+    z-index: 50;
+
+    background:
+        linear-gradient(
+            135deg,
+            #5c86aa,
+            #769fc2 55%,
+            #5f89ab
+        );
+
+    border-radius: 8px 18px 18px 8px;
+
+    box-shadow:
+        0 30px 60px rgba(37, 56, 69, .35),
+        inset -8px 0 15px rgba(0,0,0,.08);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transform-origin: left center;
+
+    transition:
+        transform 1.5s cubic-bezier(.65,.05,.36,1),
+        box-shadow 1s;
+}
+
+.cover.open {
+    transform: rotateY(-165deg);
+    box-shadow: 20px 25px 50px rgba(0,0,0,.15);
+    pointer-events: none;
+}
+
+/* textura de portada */
+
+.cover::before {
+    content: "";
+    position: absolute;
+    inset: 15px;
+    border: 1px solid rgba(255,255,255,.3);
+    border-radius: 5px 14px 14px 5px;
+}
+
+.cover::after {
+    content: "";
+    position: absolute;
+    inset: 28px;
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 4px 12px 12px 4px;
+}
+
+.cover-content {
+    text-align: center;
+    color: white;
+    position: relative;
+    z-index: 2;
+}
+
+.cover-small {
+    font-size: 13px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    opacity: .8;
+    margin-bottom: 25px;
+}
+
+.cover h1 {
+    font-family: "Playfair Display", serif;
+    font-weight: 400;
+    font-size: clamp(48px, 7vw, 78px);
+    line-height: .95;
+    letter-spacing: -2px;
+}
+
+.cover-subtitle {
+    font-family: "Caveat", cursive;
+    font-size: 25px;
+    margin-top: 25px;
+    opacity: .9;
+}
+
+.cover-flower {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.open-button {
+    margin-top: 45px;
+    padding: 13px 30px;
+    border: 1px solid rgba(255,255,255,.6);
+    background: rgba(255,255,255,.12);
+    color: white;
+    border-radius: 30px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    letter-spacing: 1px;
+    transition: .3s;
+}
+
+.open-button:hover {
+    background: rgba(255,255,255,.25);
+    transform: translateY(-2px);
+}
+
+/* =====================================================
+   PÁGINAS
+===================================================== */
+
+.pages {
+    position: absolute;
+    inset: 0;
+    background: #b9c8d2;
+    border-radius: 8px 18px 18px 8px;
+
+    box-shadow:
+        0 30px 60px rgba(37,56,69,.3);
+
+    overflow: hidden;
+}
+
+.page {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(255,255,255,.45),
+            transparent 70%
+        ),
+        var(--paper);
+
+    padding: 45px 55px;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transform: translateX(20px);
+
+    transition:
+        opacity .5s ease,
+        transform .5s ease;
+}
+
+.page.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+}
+
+/* borde interior */
+
+.page::before {
+    content: "";
+    position: absolute;
+    inset: 14px;
+    border: 1px solid rgba(70,80,85,.1);
+    pointer-events: none;
+}
+
+/* =====================================================
+   ELEMENTOS DE PÁGINA
+===================================================== */
+
+.page-number {
+    position: absolute;
+    bottom: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: "Caveat", cursive;
+    font-size: 16px;
+    color: #9b9b94;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--blue-dark);
+    margin-bottom: 8px;
+}
+
+.page-subtitle {
+    text-align: center;
+    font-family: "Caveat", cursive;
+    font-size: 22px;
+    color: #87959e;
+}
+
+/* =====================================================
+   PÁGINA DE BIENVENIDA
+===================================================== */
+
+.welcome {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.welcome-inner {
+    max-width: 620px;
+}
+
+.welcome-flower {
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.welcome h2 {
+    font-size: clamp(38px, 5vw, 58px);
+    font-weight: 400;
+    color: var(--blue-dark);
+}
+
+.welcome p {
+    margin-top: 20px;
+    font-family: "Caveat", cursive;
+    font-size: 27px;
+    color: #7e8990;
+    line-height: 1.3;
+}
+
+.welcome-line {
+    width: 90px;
+    height: 1px;
+    background: var(--blue);
+    margin: 28px auto;
+}
+
+/* =====================================================
+   FOTOS
+===================================================== */
+
+.photo-page {
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 50px;
+    align-items: center;
+    height: 100%;
+}
+
+.photo-frame {
+    position: relative;
+    background: white;
+    padding: 14px 14px 55px;
+    box-shadow: 0 10px 25px var(--shadow);
+    transform: rotate(-2deg);
+    max-width: 510px;
+    margin: auto;
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    display: block;
+}
+
+.photo-caption {
+    position: absolute;
+    bottom: 13px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: "Caveat", cursive;
+    font-size: 22px;
+    color: #6d7479;
+}
+
+.tape {
+    position: absolute;
+    width: 105px;
+    height: 28px;
+    background: rgba(202, 220, 226, .7);
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+    z-index: 3;
+}
+
+.note {
+    max-width: 400px;
+}
+
+.note-date {
+    font-family: "Caveat", cursive;
+    font-size: 21px;
+    color: var(--blue);
+    margin-bottom: 12px;
+}
+
+.note h2 {
+    font-size: 38px;
+    font-weight: 400;
+    color: var(--blue-dark);
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.note p {
+    font-family: "Caveat", cursive;
+    font-size: 25px;
+    line-height: 1.35;
+    color: #68747c;
+}
+
+/* =====================================================
+   COLLAGE
+===================================================== */
+
+.collage-page {
+    height: 100%;
+    position: relative;
+}
+
+.collage {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    margin-top: 25px;
+}
+
+.polaroid {
+    position: absolute;
+    background: white;
+    padding: 10px 10px 40px;
+    box-shadow: 0 12px 25px rgba(60,70,75,.2);
+    width: 250px;
+    transition: transform .3s;
+}
+
+.polaroid:hover {
+    transform: scale(1.04) rotate(0deg) !important;
+    z-index: 10;
+}
+
+.polaroid img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+.polaroid span {
+    position: absolute;
+    bottom: 8px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: "Caveat", cursive;
+    font-size: 20px;
+    color: #6e7579;
+}
+
+.polaroid.one {
+    left: 8%;
+    top: 30px;
+    transform: rotate(-7deg);
+}
+
+.polaroid.two {
+    left: 37%;
+    top: 70px;
+    transform: rotate(4deg);
+}
+
+.polaroid.three {
+    right: 7%;
+    top: 20px;
+    transform: rotate(-5deg);
+}
+
+/* =====================================================
+   PÁGINA FLORES AZULES
+===================================================== */
+
+.blue-flower-page {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.blue-flower-content {
+    width: 80%;
+}
+
+.blue-flower-photo {
+    width: min(500px, 80%);
+    margin: 0 auto 20px;
+    position: relative;
+}
+
+.blue-flower-photo img {
+    width: 100%;
+    max-height: 390px;
+    object-fit: cover;
+    box-shadow: 0 15px 35px rgba(50,70,85,.2);
+}
+
+.blue-flower-content .date {
+    font-family: "Caveat", cursive;
+    color: var(--blue);
+    font-size: 21px;
+    margin-top: 18px;
+}
+
+.blue-flower-content h2 {
+    font-size: 38px;
+    font-weight: 400;
+    color: var(--blue-dark);
+    margin: 8px 0 12px;
+}
+
+.blue-flower-content p {
+    font-family: "Caveat", cursive;
+    font-size: 25px;
+    color: #6d777d;
+}
+
+/* =====================================================
+   FINAL
+===================================================== */
+
+.final-page {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.final-inner {
+    max-width: 600px;
+}
+
+.final-inner .heart {
+    font-size: 45px;
+    color: var(--blue);
+    margin-bottom: 20px;
+}
+
+.final-inner h2 {
+    font-size: 42px;
+    font-weight: 400;
+    color: var(--blue-dark);
+}
+
+.final-inner p {
+    font-family: "Caveat", cursive;
+    font-size: 27px;
+    line-height: 1.4;
+    color: #727d83;
+    margin-top: 20px;
+}
+
+/* =====================================================
+   NAVEGACIÓN
+===================================================== */
+
+.navigation {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -58px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    z-index: 60;
+}
+
+.nav-button {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,.9);
+    color: var(--blue-dark);
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(40,60,75,.18);
+    font-size: 18px;
+    transition: .25s;
+}
+
+.nav-button:hover {
+    transform: translateY(-2px);
+    background: white;
+}
+
+.nav-button:disabled {
+    opacity: .35;
+    cursor: default;
+    transform: none;
+}
+
+.page-counter {
+    font-family: "Caveat", cursive;
+    color: #536d80;
+    font-size: 19px;
+}
+
+/* =====================================================
+   BOTÓN CERRAR
+===================================================== */
+
+.close-album {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    z-index: 70;
+
+    border: none;
+    background: rgba(255,255,255,.7);
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--blue-dark);
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 760px) {
+
+    body {
+        overflow: auto;
+    }
+
+    .album-scene {
+        min-height: 100vh;
+        height: auto;
+        padding: 18px;
+    }
+
+    .album {
+        width: 100%;
+        height: 82vh;
+        min-height: 570px;
+    }
+
+    .page {
+        padding: 35px 30px;
+        overflow-y: auto;
+    }
+
+    .photo-page {
+        display: block;
+        padding-top: 45px;
+    }
+
+    .photo-frame {
+        max-width: 85%;
+        margin-bottom: 30px;
+    }
+
+    .photo-frame img {
+        height: 260px;
+    }
+
+    .note {
+        max-width: 90%;
+        margin: auto;
+        text-align: center;
+    }
+
+    .note h2 {
+        font-size: 30px;
+    }
+
+    .note p {
+        font-size: 22px;
+    }
+
+    .collage {
+        height: 440px;
+        transform: scale(.82);
+        transform-origin: top center;
+    }
+
+    .polaroid {
+        width: 210px;
+    }
+
+    .polaroid img {
+        height: 190px;
+    }
+
+    .polaroid.one {
+        left: 0;
+    }
+
+    .polaroid.two {
+        left: 25%;
+        top: 100px;
+    }
+
+    .polaroid.three {
+        right: 0;
+    }
+
+    .blue-flower-content {
+        width: 95%;
+    }
+
+    .blue-flower-photo {
+        width: 90%;
+    }
+
+    .blue-flower-content h2 {
+        font-size: 30px;
+    }
+
+    .blue-flower-content p {
+        font-size: 22px;
+    }
+
+    .navigation {
+        bottom: -55px;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<!-- Decoración del fondo -->
+<div class="background-decoration">
+    <div class="bg-heart">♡</div>
+    <div class="bg-heart">♡</div>
+    <div class="bg-heart">♡</div>
+    <div class="bg-heart">♡</div>
+</div>
+
+
+<div class="album-scene">
+
+    <div class="album">
+
+
+        <!-- =================================================
+             PORTADA
+        ================================================== -->
+
+        <div class="cover" id="cover">
+
+            <div class="cover-content">
+
+                <div class="cover-flower">
+                    🌷
+                </div>
+
+                <div class="cover-small">
+                    un pequeño álbum
+                </div>
+
+                <h1>
+                    Pequeños<br>
+                    momentos
+                </h1>
+
+                <div class="cover-subtitle">
+                    Días que vale la pena recordar
+                </div>
+
+                <button
+                    class="open-button"
+                    onclick="abrirAlbum()"
+                >
+                    Abrir álbum
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             PÁGINAS
+        ================================================== -->
+
+        <div class="pages">
+
+
+            <!-- PÁGINA 1 -->
+
+            <section class="page active">
+
+                <div class="welcome">
+
+                    <div class="welcome-inner">
+
+                        <div class="welcome-flower">
+                            💙
+                        </div>
+
+                        <h2>
+                            Algunos recuerdos
+                        </h2>
+
+                        <div class="welcome-line"></div>
+
+                        <p>
+                            Hay momentos que duran un instante,
+                            pero que uno quisiera guardar un
+                            poquito más.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="page-number">
+                    01
+                </div>
+
+            </section>
+
+
+            <!-- PÁGINA 2 -->
+
+            <section class="page">
+
+                <div class="photo-page">
+
+                    <div class="photo-frame">
+
+                        <div class="tape"></div>
+
+                        <img
+                            src="imagenes/flores-01.jpeg"
+                            alt="Flores"
+                        >
+
+                        <div class="photo-caption">
+                            Un pequeño detalle 🌷
+                        </div>
+
+                    </div>
+
+                    <div class="note">
+
+                        <div class="note-date">
+                            Primer recuerdo
+                        </div>
+
+                        <h2>
+                            Todo puede comenzar
+                            con un pequeño detalle.
+                        </h2>
+
+                        <p>
+                            Algunas flores, una sonrisa
+                            y un momento que terminó
+                            siendo más bonito de lo esperado.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="page-number">
+                    02
+                </div>
+
+            </section>
+
+
+            <!-- PÁGINA 3 -->
+
+            <section class="page">
+
+                <div class="photo-page">
+
+                    <div class="note">
+
+                        <div class="note-date">
+                            Un día especial
+                        </div>
+
+                        <h2>
+                            De esos días que
+                            terminan quedándose.
+                        </h2>
+
+                        <p>
+                            No todos los recuerdos necesitan
+                            una gran historia. A veces solo 
+                            basta una buena compañía y una
+                            buena conversación.
+                        </p>
+
+                    </div>
+
+
+                    <div class="photo-frame"
+                         style="transform: rotate(3deg);">
+
+                        <div
+                            class="tape"
+                            style="transform: translateX(-50%) rotate(4deg);">
+                        </div>
+
+                        <img
+                            src="imagenes/recuerdo-02.jpeg"
+                            alt="Recuerdo"
+                        >
+
+                        <div class="photo-caption">
+                            Un día bonito
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="page-number">
+                    03
+                </div>
+
+            </section>
+
+
+            <!-- PÁGINA 4: COLLAGE -->
+
+            <section class="page">
+
+                <div class="collage-page">
+
+                    <div class="page-title">
+                        Pequeñas historias
+                    </div>
+
+                    <div class="page-subtitle">
+                        Porque una sola fotografía nunca cuenta todo.
+                    </div>
+
+
+                    <div class="collage">
+
+                        <div class="polaroid one">
+
+                            <img
+                                src="imagenes/recuerdo-03.jpeg"
+                                alt="Recuerdo 1"
+                            >
+
+                            <span>
+                                ✨
+                            </span>
+
+                        </div>
+
+
+                        <div class="polaroid two">
+
+                            <img
+                                src="imagenes/recuerdo-04.jpeg"
+                                alt="Recuerdo 2"
+                            >
+
+                            <span>
+                                Un momento
+                            </span>
+
+                        </div>
+
+
+                        <div class="polaroid three">
+
+                            <img
+                                src="imagenes/recuerdo-05.jpeg"
+                                alt="Recuerdo 3"
+                            >
+
+                            <span>
+                                Para recordar
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="page-number">
+                    04
+                </div>
+
+            </section>
+
+
+            <!-- PÁGINA 5: FLORES AZULES -->
+
+            <section class="page">
+
+                <div class="blue-flower-page">
+
+                    <div class="blue-flower-content">
+
+                        <div class="blue-flower-photo">
+
+                            <img
+                                src="imagenes/flores-azules.jpeg"
+                                alt="Flores azules y carrito"
+                            >
+
+                        </div>
+
+                        <div class="date">
+                            30 · 09 · 2026
+                        </div>
+
+                        <h2>
+                            Y esta vez las flores llegaron a mí. 💙
+                        </h2>
+
+                        <p>
+                            Un detalle inesperado que hizo
+                            más bonito el día.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="page-number">
+                    05
+                </div>
+
+            </section>
+
+
+            <!-- PÁGINA 6 -->
+
+            <section class="page">
+
+                <div class="photo-page">
+
+                    <div class="photo-frame">
+
+                        <div
+                            class="tape"
+                            style="transform: translateX(-50%) rotate(-5deg);">
+                        </div>
+
+                        <img
+                            src="imagenes/recuerdo-06.jpg"
+                            alt="Otro recuerdo"
+                        >
+
+                        <div class="photo-caption">
+                            Y quedan más por guardar...
+                        </div>
+
+                    </div>
+
+
+                    <div class="note">
+
+                        <div class="note-date">
+                            Continuará...
+                        </div>
+
+                        <h2>
+                            Todavía quedan
+                            páginas en blanco.
+                        </h2>
+
+                        <p>
+                            Quizá mañana aparezca una nueva
+                            fotografía, una nueva fecha o
+                            simplemente otro pequeño momento.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="page-number">
+                    06
+                </div>
+
+            </section>
+
+
+            <!-- PÁGINA FINAL -->
+
+            <section class="page">
+
+                <div class="final-page">
+
+                    <div class="final-inner">
+
+                        <div class="heart">
+                            💙
+                        </div>
+
+                        <h2>
+                            Gracias por ser parte
+                            de estos pequeños momentos.
+                        </h2>
+
+                        <p>
+                            Me alegra poder guardar aquí
+                            algunos de esos días que,
+                            por alguna razón, terminaron
+                            siendo un poquito más especiales.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="page-number">
+                    07
+                </div>
+
+            </section>
+
+
+        </div>
+
+
+        <!-- =================================================
+             NAVEGACIÓN
+        ================================================== -->
+
+        <div class="navigation">
+
+            <button
+                class="nav-button"
+                id="prev"
+                onclick="anteriorPagina()"
+            >
+                ←
+            </button>
+
+            <div
+                class="page-counter"
+                id="counter"
+            >
+                1 / 7
+            </div>
+
+            <button
+                class="nav-button"
+                id="next"
+                onclick="siguientePagina()"
+            >
+                →
+            </button>
+
+        </div>
+
+
+        <button
+            class="close-album"
+            onclick="cerrarAlbum()"
+            title="Cerrar álbum"
+        >
+            ×
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+const cover = document.getElementById("cover");
+
+const pages =
+    document.querySelectorAll(".page");
+
+const counter =
+    document.getElementById("counter");
+
+const prev =
+    document.getElementById("prev");
+
+const next =
+    document.getElementById("next");
+
+let currentPage = 0;
+
+
+/* =====================================================
+   ABRIR ÁLBUM
+===================================================== */
+
+function abrirAlbum() {
+
+    cover.classList.add("open");
+
+    currentPage = 0;
+
+    actualizarPagina();
+
+}
+
+
+/* =====================================================
+   CERRAR ÁLBUM
+===================================================== */
+
+function cerrarAlbum() {
+
+    cover.classList.remove("open");
+
+    currentPage = 0;
+
+    actualizarPagina();
+
+}
+
+
+/* =====================================================
+   SIGUIENTE
+===================================================== */
+
+function siguientePagina() {
+
+    if (currentPage < pages.length - 1) {
+
+        currentPage++;
+
+        actualizarPagina();
+
+    }
+
+}
+
+
+/* =====================================================
+   ANTERIOR
+===================================================== */
+
+function anteriorPagina() {
+
+    if (currentPage > 0) {
+
+        currentPage--;
+
+        actualizarPagina();
+
+    }
+
+}
+
+
+/* =====================================================
+   ACTUALIZAR
+===================================================== */
+
+function actualizarPagina() {
+
+    pages.forEach((page, index) => {
+
+        page.classList.toggle(
+            "active",
+            index === currentPage
+        );
+
+    });
+
+
+    counter.textContent =
+        `${currentPage + 1} / ${pages.length}`;
+
+
+    prev.disabled =
+        currentPage === 0;
+
+
+    next.disabled =
+        currentPage === pages.length - 1;
+
+}
+
+
+/* =====================================================
+   TECLADO
+===================================================== */
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "ArrowRight") {
+        siguientePagina();
+    }
+
+    if (event.key === "ArrowLeft") {
+        anteriorPagina();
+    }
+
+    if (event.key === "Escape") {
+        cerrarAlbum();
+    }
+
+});
+
+
+/* =====================================================
+   INICIALIZAR
+===================================================== */
+
+actualizarPagina();
+
+</script>
+
+</body>
+</html>
+
